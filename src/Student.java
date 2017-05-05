@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
 
 /**
- * Created by jeffholloway on 4/30/17.
+ * Created by Jeff holloway on 5/4/17.
  * CMIS 242
  * Student class defines the student record and contains three methods
  */
@@ -9,14 +9,14 @@ public class Student {
     private String name;
     private String major;
     private int totalCredit;
-    private int quatlityPoint;
+    private int gradePoint;
 
     // Constructor used when new student records are created
     public Student(String name, String major) {
         this.name = name;
         this.major = major;
         this.totalCredit = 0;
-        this.quatlityPoint = 0;
+        this.gradePoint = 0;
     }
 
     // this method accepts the course grade and credit hours and updates variables used to compute GPA
@@ -34,17 +34,17 @@ public class Student {
         } else if (grade == 'F') {
             value = 2;
         }
-        this.quatlityPoint = value * credit;
+        this.gradePoint = value * credit;
     }
 
     // this method overrides the toString and returns a labeled string containing the student name, major, and GPA
     @Override
     public String toString() {
-        double gpa = 0;
+        double gpa;
         if (totalCredit == 0) {
             gpa = 4.0;
         } else {
-            gpa = (quatlityPoint / (totalCredit * 10.0)) * 4.0;
+            gpa = (gradePoint / (totalCredit * 10.0)) * 4.0;
         }
         DecimalFormat df = new DecimalFormat("#.0#");
         return "Name : " + name + "\n Major : " + major + "\n GPA : " + df.format(gpa);
